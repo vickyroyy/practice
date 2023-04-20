@@ -1,3 +1,52 @@
-Vicky is learning GIT HUM
+package com.amzdemoo.de;
 
-Vicky learned this from kamal.
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DeApplication { 
+
+	public static void main(String[] args) {
+		SpringApplication.run(DeApplication.class, args);
+	}
+
+}
+
+
+##############################################################
+
+Docker: FROM openjdk:17-jdk-alpine
+ARG JAR_FILE
+COPY ${JAR_FILE} amazon-jenkins-demo.jar
+ENTRYPOINT ["java","-jar","/amazon-jenkins-demo.jar"]
+
+
+
+##########################################################
+package com.amzdemoo.de;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.slf4j.*;
+
+@SpringBootApplication
+public class DeApplication implements CommandLineRunner {
+	public static final Logger Logger= LoggerFactory.getLogger(DeApplication.class);
+
+	public static void main(String[] args) {
+		Logger.info("its a CI pipeline job");
+		SpringApplication.run(DeApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		Logger.info("second log");
+		
+	}
+
+}
+
+#################################
+
+server.port=8081
